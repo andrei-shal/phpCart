@@ -36,6 +36,15 @@ window.deleteProduct = (id) => {
 }
 
 window.addEventListener('load', () => {
+    document.addEventListener('click', (event) => {
+        const button = event.target.closest('.js-add-to-cart');
+
+        if (button) {
+            const productId = button.dataset.id;
+            addProduct(productId);
+        }
+    });
+
     reloadCart();
 });
 

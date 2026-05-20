@@ -1,9 +1,14 @@
 import { clearCartAPI, addProductAPI, deleteProductAPI, buyAPI } from "./api.js"
 import {showAlert} from "./ui.js";
 
+let buyModalInstance = null;
+
 window.buy = () => {
-    const modal = new bootstrap.Modal(document.getElementById('buyModal'));
-    modal.show();
+    const modalEl = document.getElementById('buyModal');
+    if (!buyModalInstance) {
+        buyModalInstance = new bootstrap.Modal(modalEl);
+    }
+    buyModalInstance.show();
 }
 
 window.clearCart = () => {
@@ -49,9 +54,9 @@ window.addEventListener('load', () => {
             .then(data => {
                 if (!data.success) showAlert(data.error);
 
-                const modal = bootstrap.Modal.getInstance(document.getElementById('buyModal'));
-                modal.hide();
-                modal.dispose();
+                if (buyModalInstance) buyModalInstance.hide();
+
+                e.target.reset();
 
                 reloadCart();
         }).catch(() => {
