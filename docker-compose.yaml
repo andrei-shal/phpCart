@@ -7,8 +7,6 @@ services:
     environment:
       MAIL_USER: ${MAIL_USER}
       MAIL_PASS: ${MAIL_PASS}
-    volumes:
-      - ./src:/var/www/html
     depends_on:
       - db
 

@@ -10,7 +10,7 @@ RUN echo 'sendmail_path = "/usr/bin/msmtp -C /etc/msmtprc -t"' > /usr/local/etc/
 
 RUN a2enmod rewrite
 
-WORKDIR /var/www/html
+COPY ./src /var/www/html/
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
