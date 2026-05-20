@@ -1,11 +1,9 @@
 <?php
 
-class Database
-{
-    private static ?PDO $instance = null;
+class Database {
+    private static $instance = null;
 
-    public static function getInstance(): PDO
-    {
+    public static function getInstance() {
         if (self::$instance === null) {
 
             $attempts = 5;

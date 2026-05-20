@@ -37,7 +37,6 @@ window.deleteProduct = (id) => {
 
 window.addEventListener('load', () => {
     reloadCart();
-    alert("gg")
 });
 
 function reloadCart() {

@@ -4,6 +4,9 @@ services:
     container_name: app
     ports:
       - "80:80"
+    environment:
+      MAIL_USER: ${MAIL_USER}
+      MAIL_PASS: ${MAIL_PASS}
     volumes:
       - ./src:/var/www/html
     depends_on:
@@ -18,8 +21,6 @@ services:
       MYSQL_DATABASE: shop
       MYSQL_USER: user
       MYSQL_PASSWORD: secret
-    ports:
-      - "3306:3306"
     volumes:
       - ./db/data:/var/lib/mysql
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
